@@ -1,0 +1,29 @@
+<div class="card">
+  <img class="card-img-top img-fluid" [src]="headerPhotoURL">
+  <div class="card-block">
+    <div class="row">
+      <div class="col-sm-4">
+        <img class="profile-photo img-fluid" [src]="profilePhotoURL">
+      </div>
+      <div class="col-sm-8">
+        <h4 class="card-title">{{fullName}}</h4>
+        <p class="small">@{{handle}}</p>
+      </div>
+    </div>
+
+    <div class="row mt-1">
+      <div class="col-sm-4">
+        <p class="small text-muted text-uppercase">Posts</p>
+        <h4>{{posts}}</h4>
+      </div>
+      <div class="col-sm-4">
+        <p class="small text-muted text-uppercase">Following</p>
+        <h4>{{following}}</h4>
+      </div>
+      <div class="col-sm-4">
+        <p class="small text-muted text-uppercase">Followers</p>
+        <h4>{{followers}}</h4>
+      </div>
+    </div>
+  </div>
+</div>
