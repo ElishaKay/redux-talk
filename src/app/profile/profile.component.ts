@@ -15,7 +15,7 @@ export class ProfileComponent implements OnInit {
   private following: number;
   private followers: number;
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.name = 'Jesse Pinho';
     this.handle = 'jessepinho';
     this.headerPhotoURL = 'https://pbs.twimg.com/profile_banners/16901789/1398787929/1500x500';
