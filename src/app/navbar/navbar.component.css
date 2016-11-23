@@ -12,6 +12,7 @@
 }
 
 .profile-photo {
+  cursor: pointer;
   height: auto;
   width: 32px;
 }
