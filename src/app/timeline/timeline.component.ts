@@ -11,6 +11,7 @@ function getProfilePhotoURL(): string {
   styleUrls: ['./timeline.component.css']
 })
 export class TimelineComponent implements OnInit {
+  private newPosts: IPost[];
   private posts: IPost[];
 
   ngOnInit() {
@@ -27,7 +28,7 @@ export class TimelineComponent implements OnInit {
         handle: 'alex',
         name: 'Alexander Hamilton',
         profilePhotoURL: getProfilePhotoURL(),
-        text: 'Big duel tonight. Wish me luck! #nervous #sharpshooter',
+        text: 'Big duel tonight. Wish me luck! #sharpshooter #nervous',
       },
       {
         createdAt: moment().subtract(19, 'hours').toDate(),
@@ -51,5 +52,20 @@ export class TimelineComponent implements OnInit {
         text: 'Sorry for everything.',
       },
     ];
+
+    this.newPosts = [
+      {
+        createdAt: moment().subtract(10, 'seconds').toDate(),
+        handle: 'FiveThirtyEight',
+        name: 'FiveThirtyEight',
+        profilePhotoURL: getProfilePhotoURL(),
+        text: 'Here\'s why everything you think you know about numbers is wrong. 53eig.ht/redux',
+      },
+    ]
+  }
+
+  handleNewPostNotificationClick() {
+    this.posts = [...this.newPosts, ...this.posts];
+    this.newPosts = [];
   }
 }
