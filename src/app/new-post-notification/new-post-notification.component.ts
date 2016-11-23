@@ -9,7 +9,7 @@ export class NewPostNotificationComponent {
   @Input() private count: number;
 
   get message() {
-    const postOrPosts = this.count > 1 ? 'posts' : 'post';
+    const postOrPosts = this.count === 1 ? 'post' : 'posts';
     return `View ${this.count} new ${postOrPosts}`;
   }
 }

@@ -2,10 +2,10 @@
   <ul class="list-group list-group-flush">
     <li
       class="list-group-item list-group-item-action p-0"
-      [@appear]="newPosts.length ? 'visible' : 'hidden'"
+      [@appear]="newPostIds.length ? 'visible' : 'hidden'"
       >
       <app-new-post-notification
-        [count]="newPosts.length"
+        [count]="newPostIds.length"
         (click)="handleNewPostNotificationClick()"
         ></app-new-post-notification>
     </li>

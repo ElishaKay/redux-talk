@@ -39,7 +39,7 @@ function getProfilePhotoURL(): string {
   ],
 })
 export class TimelineComponent implements OnInit {
-  private newPosts: IPost[];
+  private newPostIds: number[];
   private posts: IPost[];
 
   ngOnInit() {
@@ -102,32 +102,15 @@ export class TimelineComponent implements OnInit {
       },
     ];
 
-    this.newPosts = [
-      {
-        id: 7,
-        createdAt: moment().subtract(1, 'seconds').toDate(),
-        handle: 'fuzzbeed',
-        name: 'FuzzBeed',
-        profilePhotoURL: getProfilePhotoURL(),
-        text: 'This Brave Chicken Came Upon A Road. You Won\'t Believe What Happened Next.',
-      },
-      {
-        id: 6,
-        createdAt: moment().subtract(10, 'seconds').toDate(),
-        handle: 'FiveThirtyEight',
-        name: 'FiveThirtyEight',
-        profilePhotoURL: getProfilePhotoURL(),
-        text: 'Here\'s why everything you think you know about numbers is wrong. 53eig.ht/redux',
-      },
-    ]
+    this.newPostIds = [6, 7];
   }
 
   handleNewPostNotificationClick() {
-    this.newPosts = [];
+    this.newPostIds = [];
   }
 
   postAnimationState(post: IPost): 'visible' | 'hidden' {
-    if (this.newPosts.map(post => post.id).indexOf(post.id) !== -1) {
+    if (this.newPostIds.indexOf(post.id) !== -1) {
       return 'hidden';
     }
     return 'visible';
