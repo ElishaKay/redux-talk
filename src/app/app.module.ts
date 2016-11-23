@@ -11,6 +11,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { PostComponent } from './post/post.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import { PostModalComponent } from './post-modal/post-modal.component';
+import { NewPostNotificationComponent } from './new-post-notification/new-post-notification.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { PostModalComponent } from './post-modal/post-modal.component';
     NavbarComponent,
     PostComponent,
     TimelineComponent,
-    PostModalComponent
+    PostModalComponent,
+    NewPostNotificationComponent
   ],
   imports: [
     Angular2FontawesomeModule,
