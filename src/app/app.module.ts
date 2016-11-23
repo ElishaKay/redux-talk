@@ -9,6 +9,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PostComponent } from './post/post.component';
 import { TimelineComponent } from './timeline/timeline.component';
+import { PostModalComponent } from './post-modal/post-modal.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { TimelineComponent } from './timeline/timeline.component';
     ProfileComponent,
     NavbarComponent,
     PostComponent,
-    TimelineComponent
+    TimelineComponent,
+    PostModalComponent
   ],
   imports: [
     BrowserModule,
