@@ -17,7 +17,7 @@ function getProfilePhotoURL(): string {
 @Component({
   selector: 'app-timeline',
   templateUrl: './timeline.component.html',
-  styleUrls: ['./timeline.component.css'],
+  styleUrls: ['./timeline.component.scss'],
   animations: [
     trigger('appear', [
       state('visible', style({

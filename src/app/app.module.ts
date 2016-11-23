@@ -12,6 +12,7 @@ import { PostComponent } from './post/post.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import { PostModalComponent } from './post-modal/post-modal.component';
 import { NewPostNotificationComponent } from './new-post-notification/new-post-notification.component';
+import { NewPostFormComponent } from './new-post-form/new-post-form.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { NewPostNotificationComponent } from './new-post-notification/new-post-n
     PostComponent,
     TimelineComponent,
     PostModalComponent,
-    NewPostNotificationComponent
+    NewPostNotificationComponent,
+    NewPostFormComponent
   ],
   imports: [
     Angular2FontawesomeModule,
