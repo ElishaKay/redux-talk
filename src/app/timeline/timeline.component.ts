@@ -9,6 +9,7 @@ import {
   trigger,
 } from '@angular/core';
 import * as moment from 'moment';
+import * as uuid from 'uuid';
 
 function getProfilePhotoURL(): string {
   return `https://unsplash.it/48/48/?random=${Math.random()}`;
@@ -39,13 +40,21 @@ function getProfilePhotoURL(): string {
   ],
 })
 export class TimelineComponent implements OnInit {
-  private newPostIds: number[];
+  private newPostIds: string[];
   private posts: IPost[];
 
+  private handle: string;
+  private name: string;
+  private profilePhotoURL: string;
+
   ngOnInit() {
+    this.handle = 'jessepinho';
+    this.name = 'Jesse Pinho';
+    this.profilePhotoURL = 'https://pbs.twimg.com/profile_images/378800000310650745/5e38031f42fdbacc2c2041f021460f02.jpeg';
+
     this.posts = [
       {
-        id: 7,
+        id: uuid(),
         createdAt: moment().subtract(1, 'seconds').toDate(),
         handle: 'fuzzbeed',
         name: 'FuzzBeed',
@@ -53,7 +62,7 @@ export class TimelineComponent implements OnInit {
         text: 'This Brave Chicken Came Upon A Road. You Won\'t Believe What Happened Next.',
       },
       {
-        id: 6,
+        id: uuid(),
         createdAt: moment().subtract(10, 'seconds').toDate(),
         handle: 'FiveThirtyEight',
         name: 'FiveThirtyEight',
@@ -61,7 +70,7 @@ export class TimelineComponent implements OnInit {
         text: 'Here\'s why everything you think you know about numbers is wrong. 53eig.ht/redux',
       },
       {
-        id: 5,
+        id: uuid(),
         createdAt: moment().subtract(24, 'minutes').toDate(),
         handle: 'dangerzone',
         name: 'Sterling Archer',
@@ -69,7 +78,7 @@ export class TimelineComponent implements OnInit {
         text: 'All I\'ve had today is like six gummy bears and some scotch.',
       },
       {
-        id: 4,
+        id: uuid(),
         createdAt: moment().subtract(13, 'hours').toDate(),
         handle: 'alex',
         name: 'Alexander Hamilton',
@@ -77,7 +86,7 @@ export class TimelineComponent implements OnInit {
         text: 'Big duel tonight. Wish me luck! #sharpshooter #nervous',
       },
       {
-        id: 3,
+        id: uuid(),
         createdAt: moment().subtract(19, 'hours').toDate(),
         handle: 'inasunshinestateofmind',
         name: 'Florida Man',
@@ -85,7 +94,7 @@ export class TimelineComponent implements OnInit {
         text: 'Catch me on the news tonight at 7pm EST!',
       },
       {
-        id: 2,
+        id: uuid(),
         createdAt: moment().subtract(4, 'days').toDate(),
         handle: 'lowercase',
         name: 'e. e. cummings',
@@ -93,7 +102,7 @@ export class TimelineComponent implements OnInit {
         text: 'where is the shift key i cannot find it',
       },
       {
-        id: 1,
+        id: uuid(),
         createdAt: moment().subtract(10, 'days').toDate(),
         handle: '2016',
         name: 'The Year 2016',
@@ -102,14 +111,29 @@ export class TimelineComponent implements OnInit {
       },
     ];
 
-    this.newPostIds = [6, 7];
+    this.newPostIds = this.posts.slice(0, 2).map(post => post.id);
   }
 
-  handleNewPostNotificationClick() {
+  private handleNewPostNotificationClick() {
     this.newPostIds = [];
   }
 
-  postAnimationState(post: IPost): 'visible' | 'hidden' {
+  private handleNewPost(text: string): void {
+    const id = uuid();
+
+    this.posts.unshift({
+      id,
+      createdAt: new Date(),
+      handle: this.handle,
+      name: this.name,
+      profilePhotoURL: this.profilePhotoURL,
+      text,
+    });
+
+    this.newPostIds.unshift(id);
+  }
+
+  private postAnimationState(post: IPost): 'visible' | 'hidden' {
     if (this.newPostIds.indexOf(post.id) !== -1) {
       return 'hidden';
     }

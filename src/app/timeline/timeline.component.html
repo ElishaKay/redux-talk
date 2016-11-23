@@ -1,7 +1,9 @@
 <div class="card">
   <ul class="list-group list-group-flush">
     <li class="list-group-item new-post-form">
-      <app-new-post-form></app-new-post-form>
+      <app-new-post-form
+        (newPost)="handleNewPost($event)"
+        ></app-new-post-form>
     </li>
     <li
       class="list-group-item list-group-item-action p-0"

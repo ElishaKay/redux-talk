@@ -1,5 +1,5 @@
 interface IPost {
-  id: number;
+  id: string;
   createdAt: Date;
   handle: string;
   name: string;
