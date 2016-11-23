@@ -12,8 +12,8 @@ export class ProfileComponent implements OnInit {
   private profilePhotoURL: string;
 
   private posts: number;
-  private following: number;
-  private followers: number;
+  private likes: number;
+  private reposts: number;
 
   ngOnInit() {
     this.name = 'Jesse Pinho';
@@ -22,7 +22,7 @@ export class ProfileComponent implements OnInit {
     this.profilePhotoURL = 'https://pbs.twimg.com/profile_images/378800000310650745/5e38031f42fdbacc2c2041f021460f02.jpeg';
 
     this.posts = 0;
-    this.following = 105;
-    this.followers = 212;
+    this.likes = 0;
+    this.reposts = 0;
   }
 }
