@@ -1,13 +1,23 @@
 <div class="card">
   <ul class="list-group list-group-flush">
-    <li class="list-group-item list-group-item-action p-0" *ngIf="newPosts.length">
+    <li
+      class="list-group-item list-group-item-action p-0"
+      [@appear]="newPosts.length ? 'visible' : 'hidden'"
+      >
       <app-new-post-notification
         [count]="newPosts.length"
         (click)="handleNewPostNotificationClick()"
         ></app-new-post-notification>
     </li>
-    <li class="list-group-item list-group-item-action" *ngFor="let post of posts">
-      <app-post [post]="post" (click)="postModal.open()"></app-post>
+    <li
+      class="list-group-item list-group-item-action post"
+      *ngFor="let post of posts"
+      [@appear]="postAnimationState(post)"
+      >
+      <app-post
+        [post]="post"
+        (click)="postModal.open()"
+        ></app-post>
       <app-post-modal #postModal [post]="post"></app-post-modal>
     </li>
   </ul>
