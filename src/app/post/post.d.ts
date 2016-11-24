@@ -5,4 +5,6 @@ interface IPost {
   name: string;
   profilePhotoURL: string;
   text: string;
+  liked?: boolean;
+  reposted?: boolean;
 }
