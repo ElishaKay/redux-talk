@@ -8,6 +8,7 @@ import { Component, Input } from '@angular/core';
 export class PostComponent {
   @Input() private post: IPost;
 
+  // tslint:disable-next-line:no-unused-variable
   private handleLikeButtonClick(event) {
     this.post.liked = !this.post.liked;
 
@@ -15,6 +16,7 @@ export class PostComponent {
     event.stopPropagation();
   }
 
+  // tslint:disable-next-line:no-unused-variable
   private handleRepostButtonClick(event) {
     this.post.reposted = !this.post.reposted;
 
