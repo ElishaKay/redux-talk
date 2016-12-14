@@ -1,7 +1,9 @@
 import {
   animate,
   Component,
+  EventEmitter,
   Input,
+  Output,
   state,
   style,
   transition,
@@ -44,25 +46,38 @@ export class TimelineComponent {
   @Input() private posts: IPost[] = mockPosts;
   @Input() private newPostIds: string[] = this.posts.slice(0, 2).map(post => post.id);
 
+  @Input() private isRedux: boolean = false;
+
+  @Output() private newPost: EventEmitter<IPost> = new EventEmitter<IPost>();
+  @Output() private newPostNotificationClick: EventEmitter<void> = new EventEmitter<void>();
+
   // tslint:disable-next-line:no-unused-variable
   private handleNewPostNotificationClick() {
-    this.newPostIds = [];
+    if (this.isRedux) {
+      this.newPostNotificationClick.emit(null);
+    } else {
+      this.newPostIds = [];
+    }
   }
 
   // tslint:disable-next-line:no-unused-variable
   private handleNewPost(text: string): void {
     const id = uuid();
-
-    this.posts.unshift({
+    const newPost = {
       id,
       createdAt: new Date(),
       handle: this.handle,
       name: this.name,
       profilePhotoURL: this.profilePhotoURL,
       text,
-    });
+    };
 
-    this.newPostIds.unshift(id);
+    if (this.isRedux) {
+      this.newPost.emit(newPost);
+    } else {
+      this.posts.unshift(newPost);
+      this.newPostIds.unshift(id);
+    }
   }
 
   // tslint:disable-next-line:no-unused-variable
