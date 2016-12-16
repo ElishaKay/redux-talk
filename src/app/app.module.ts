@@ -8,6 +8,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { ControlPanelComponent } from './control-panel/control-panel.component';
+import { ControlPanelContainerComponent } from './control-panel/control-panel.container';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileContainerComponent } from './profile/profile.container';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -23,6 +25,8 @@ import { rootReducer } from './app.reducers';
 @NgModule({
   declarations: [
     AppComponent,
+    ControlPanelComponent,
+    ControlPanelContainerComponent,
     ProfileComponent,
     ProfileContainerComponent,
     NavbarComponent,

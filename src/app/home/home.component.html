@@ -6,6 +6,8 @@
     <div class="col-xs">
       <app-profile *ngIf="!useRedux"></app-profile>
       <app-profile-container *ngIf="useRedux"></app-profile-container>
+
+      <app-control-panel-container [useRedux]="useRedux"></app-control-panel-container>
     </div>
     <div class="col-xs-8">
       <app-timeline *ngIf="!useRedux"></app-timeline>
