@@ -52,7 +52,7 @@ import { rootReducer } from './app.reducers';
 export class AppModule {
   constructor(
     devToolsExtension: DevToolsExtension,
-    ngRedux: NgRedux<any>
+    ngRedux: NgRedux<IAppState>
   ) {
     const enhancers = [];
 

@@ -19,7 +19,7 @@ export class TimelineContainerComponent implements OnDestroy {
   private disconnect: Function;
 
   constructor(
-    private ngRedux: NgRedux<any>
+    private ngRedux: NgRedux<IAppState>
   ) {
     this.disconnect = ngRedux.connect(this.mapStateToTarget, this.mapDispatchToThis)(this);
   }
