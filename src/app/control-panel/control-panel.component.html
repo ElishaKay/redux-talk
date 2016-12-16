@@ -9,9 +9,16 @@
     <template [ngIf]="useRedux">
       <div class="list-group-item">
         <div class="form-group row">
-          <label for="user__name" class="col-md-2 col-form-label">Name</label>
-          <div class="col-md-10">
+          <label for="user__name" class="col-md-3 col-form-label">Name</label>
+          <div class="col-md-9">
             <input class="form-control" id="user__name" [ngModel]="name" (ngModelChange)="handleNameChange($event)">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="user__handle" class="col-md-3 col-form-label">Handle</label>
+          <div class="col-md-9">
+            <input class="form-control" id="user__handle" [ngModel]="handle" (ngModelChange)="handleHandleChange($event)">
           </div>
         </div>
       </div>

@@ -1,15 +1,17 @@
 import { Component, Input, OnDestroy } from '@angular/core';
 import { NgRedux } from 'ng2-redux';
 
-import { USER_SET_NAME } from '../app.action-types';
+import { USER_SET_NAME, USER_SET_HANDLE } from '../app.action-types';
 
 @Component({
   selector: 'app-control-panel-container',
   template: `
     <app-control-panel
       [name]="name"
+      [handle]="handle"
       [useRedux]="useRedux"
       (nameChange)="handleNameChange($event)"
+      (handleChange)="handleHandleChange($event)"
       ></app-control-panel>
   `,
 })
@@ -28,10 +30,11 @@ export class ControlPanelContainerComponent implements OnDestroy {
   }
 
   private mapStateToTarget(state: IAppState) {
-    const { name } = state.user;
+    const { name, handle } = state.user;
 
     return {
       name,
+      handle,
     };
   }
 
@@ -43,6 +46,13 @@ export class ControlPanelContainerComponent implements OnDestroy {
   private handleNameChange(value: string) {
     this.ngRedux.dispatch({
       type: USER_SET_NAME,
+      value,
+    });
+  }
+
+  private handleHandleChange(value: string) {
+    this.ngRedux.dispatch({
+      type: USER_SET_HANDLE,
       value,
     });
   }

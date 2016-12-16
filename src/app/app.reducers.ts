@@ -8,6 +8,7 @@ import {
   NEW_POST_IDS_RESET,
 
   USER_SET_NAME,
+  USER_SET_HANDLE,
 } from './app.action-types';
 
 const LAST_TWO_POST_IDS = mockPosts.slice(0, 2).map(post => post.id);
@@ -54,6 +55,8 @@ function user(state = USER_INITIAL_STATE, action) {
   switch (action.type) {
     case USER_SET_NAME:
       return Object.assign({}, state, { name: action.value });
+    case USER_SET_HANDLE:
+      return Object.assign({}, state, { handle: action.value });
     default:
       return state;
   }
