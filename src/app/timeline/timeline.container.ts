@@ -12,9 +12,14 @@ import {
   selector: 'app-timeline-container',
   template: `
     <app-timeline
+      [name]="name"
+      [handle]="handle"
+      [profilePhotoURL]="profilePhotoURL"
+
       [newPostIds]="newPostIds"
       [posts]="posts"
       [isRedux]="true"
+
       (newPost)="handleNewPost($event)"
       (newPostNotificationClick)="handleNewPostNotificationClick()"
       (toggleLikePost)="handleToggleLikePost($event)"
@@ -36,12 +41,23 @@ export class TimelineContainerComponent implements OnDestroy {
   }
 
   private mapStateToTarget(state) {
-    const newPostIds = state.newPostIds;
-    const posts = state.posts;
+    const {
+      newPostIds,
+      posts,
+      user: {
+        name,
+        handle,
+        profilePhotoURL,
+      },
+    } = state;
 
     return {
       newPostIds,
       posts,
+
+      name,
+      handle,
+      profilePhotoURL,
     };
   }
 
