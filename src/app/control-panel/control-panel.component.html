@@ -1,18 +1,9 @@
 <div class="card">
   <div class="list-group list-group-flush">
-    <a
-      class="list-group-item list-group-item-action"
-      [routerLink]="'/'"
-      [queryParams]="{ use_redux: 'YESPLZ' }"
-      *ngIf="!useRedux"
-      >
+    <a href="/?use_redux=YESPLZ" class="list-group-item list-group-item-action" *ngIf="!useRedux">
       Use Redux
     </a>
-    <a
-      class="list-group-item list-group-item-action"
-      [routerLink]="'/'"
-      *ngIf="useRedux"
-      >
+    <a href="/" class="list-group-item list-group-item-action" *ngIf="useRedux">
       Don't use Redux
     </a>
   </div>
