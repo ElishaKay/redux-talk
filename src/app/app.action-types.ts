@@ -1,2 +1,4 @@
 export const POST_ADD = 'POST_ADD';
+export const POST_TOGGLE_LIKE = 'POST_TOGGLE_LIKE';
+export const POST_TOGGLE_REPOST = 'POST_TOGGLE_REPOST';
 export const NEW_POST_IDS_RESET = 'NEW_POST_IDS_RESET';

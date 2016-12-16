@@ -1,10 +1,15 @@
 import { combineReducers } from 'redux';
 
 import { mockPosts } from './timeline/mock-posts';
-import { POST_ADD, NEW_POST_IDS_RESET } from './app.action-types';
+import {
+  POST_ADD,
+  POST_TOGGLE_LIKE,
+  POST_TOGGLE_REPOST,
+  NEW_POST_IDS_RESET,
+} from './app.action-types';
 
 const LAST_TWO_POST_IDS = mockPosts.slice(0, 2).map(post => post.id);
-function newPostIds(state = LAST_TWO_POST_IDS, action) {
+function newPostIds(state: string[] = LAST_TWO_POST_IDS, action) {
   if (action.type === POST_ADD) {
     return [action.value.id, ...state];
   }
@@ -14,11 +19,27 @@ function newPostIds(state = LAST_TWO_POST_IDS, action) {
   return state;
 }
 
-function posts(state = mockPosts, action) {
-  if (action.type === POST_ADD) {
-    return [action.value, ...state];
+function posts(state: IPost[] = mockPosts, action) {
+  switch (action.type) {
+    case POST_ADD:
+      return [action.value, ...state];
+    case POST_TOGGLE_LIKE:
+      return state.map(post => {
+        if (post.id === action.value.id) {
+          return Object.assign({}, action.value, { liked: !action.value.liked });
+        }
+        return post;
+      });
+    case POST_TOGGLE_REPOST:
+      return state.map(post => {
+        if (post.id === action.value.id) {
+          return Object.assign({}, action.value, { reposted: !action.value.reposted });
+        }
+        return post;
+      });
+    default:
+      return state;
   }
-  return state;
 }
 
 const USER_INITIAL_STATE = {

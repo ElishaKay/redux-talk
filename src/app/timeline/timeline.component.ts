@@ -50,6 +50,8 @@ export class TimelineComponent {
 
   @Output() private newPost: EventEmitter<IPost> = new EventEmitter<IPost>();
   @Output() private newPostNotificationClick: EventEmitter<void> = new EventEmitter<void>();
+  @Output() private toggleLikePost: EventEmitter<IPost> = new EventEmitter<IPost>();
+  @Output() private toggleRepost: EventEmitter<IPost> = new EventEmitter<IPost>();
 
   // tslint:disable-next-line:no-unused-variable
   private handleNewPostNotificationClick() {
@@ -78,6 +80,16 @@ export class TimelineComponent {
       this.posts.unshift(newPost);
       this.newPostIds.unshift(id);
     }
+  }
+
+  // tslint:disable-next-line:no-unused-variable
+  private handleToggleLikePost(post: IPost) {
+    this.toggleLikePost.emit(post);
+  }
+
+  // tslint:disable-next-line:no-unused-variable
+  private handleToggleRepost(post: IPost) {
+    this.toggleRepost.emit(post);
   }
 
   // tslint:disable-next-line:no-unused-variable

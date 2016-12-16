@@ -22,8 +22,15 @@
       <app-post
         [post]="post"
         (click)="postModal.open()"
+        (toggleLikePost)="handleToggleLikePost(post)"
+        (toggleRepost)="handleToggleRepost(post)"
         ></app-post>
-      <app-post-modal #postModal [post]="post"></app-post-modal>
+      <app-post-modal
+        #postModal
+        [post]="post"
+        (toggleLikePost)="handleToggleLikePost(post)"
+        (toggleRepost)="handleToggleRepost(post)"
+        ></app-post-modal>
     </li>
   </ul>
 </div>
