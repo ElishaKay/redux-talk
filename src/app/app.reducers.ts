@@ -6,6 +6,8 @@ import {
   POST_TOGGLE_LIKE,
   POST_TOGGLE_REPOST,
   NEW_POST_IDS_RESET,
+
+  USER_SET_NAME,
 } from './app.action-types';
 
 const LAST_TWO_POST_IDS = mockPosts.slice(0, 2).map(post => post.id);
@@ -49,7 +51,12 @@ const USER_INITIAL_STATE = {
   profilePhotoURL: 'https://pbs.twimg.com/profile_images/378800000310650745/5e38031f42fdbacc2c2041f021460f02.jpeg',
 };
 function user(state = USER_INITIAL_STATE, action) {
-  return state;
+  switch (action.type) {
+    case USER_SET_NAME:
+      return Object.assign({}, state, { name: action.value });
+    default:
+      return state;
+  }
 }
 
 export const rootReducer = combineReducers({

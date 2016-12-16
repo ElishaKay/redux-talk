@@ -6,5 +6,15 @@
     <a href="/" class="list-group-item list-group-item-action" *ngIf="useRedux">
       Don't use Redux
     </a>
+    <template [ngIf]="useRedux">
+      <div class="list-group-item">
+        <div class="form-group row">
+          <label for="user__name" class="col-md-2 col-form-label">Name</label>
+          <div class="col-md-10">
+            <input class="form-control" id="user__name" [ngModel]="name" (ngModelChange)="handleNameChange($event)">
+          </div>
+        </div>
+      </div>
+    </template>
   </div>
 </div>
