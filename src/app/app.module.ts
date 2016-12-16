@@ -15,7 +15,6 @@ import { NavbarContainerComponent } from './navbar/navbar.container';
 import { PostComponent } from './post/post.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import { TimelineContainerComponent } from './timeline/timeline.container';
-import { PostModalComponent } from './post-modal/post-modal.component';
 import { NewPostNotificationComponent } from './new-post-notification/new-post-notification.component';
 import { NewPostFormComponent } from './new-post-form/new-post-form.component';
 import { HomeComponent } from './home/home.component';
@@ -31,7 +30,6 @@ import { rootReducer } from './app.reducers';
     PostComponent,
     TimelineComponent,
     TimelineContainerComponent,
-    PostModalComponent,
     NewPostNotificationComponent,
     NewPostFormComponent,
     HomeComponent,

@@ -19,14 +19,14 @@
         class="repost-button mr-3"
         [class.reposted]="post.reposted"
         [name]="'retweet'"
-        (click)="handleRepostButtonClick($event)"
+        (click)="handleRepostButtonClick()"
         ></fa>
 
       <fa
         class="like-button"
         [class.liked]="post.liked"
         [name]="'heart'"
-        (click)="handleLikeButtonClick($event)"
+        (click)="handleLikeButtonClick()"
         ></fa>
     </div>
   </div>

@@ -11,18 +11,12 @@ export class PostComponent {
   @Output() private toggleRepost: EventEmitter<void> = new EventEmitter<void>();
 
   // tslint:disable-next-line:no-unused-variable
-  private handleLikeButtonClick(event) {
+  private handleLikeButtonClick() {
     this.toggleLikePost.emit(null);
-
-    // Prevent the post modal from opening.
-    event.stopPropagation();
   }
 
   // tslint:disable-next-line:no-unused-variable
-  private handleRepostButtonClick(event) {
+  private handleRepostButtonClick() {
     this.toggleRepost.emit(null);
-
-    // Prevent the post modal from opening.
-    event.stopPropagation();
   }
 }
