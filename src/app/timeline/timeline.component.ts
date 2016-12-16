@@ -84,12 +84,20 @@ export class TimelineComponent {
 
   // tslint:disable-next-line:no-unused-variable
   private handleToggleLikePost(post: IPost) {
-    this.toggleLikePost.emit(post);
+    if (this.isRedux) {
+      this.toggleLikePost.emit(post);
+    } else {
+      post.liked = !post.liked;
+    }
   }
 
   // tslint:disable-next-line:no-unused-variable
   private handleToggleRepost(post: IPost) {
-    this.toggleRepost.emit(post);
+    if (this.isRedux) {
+      this.toggleRepost.emit(post);
+    } else {
+      post.reposted = !post.reposted;
+    }
   }
 
   // tslint:disable-next-line:no-unused-variable
