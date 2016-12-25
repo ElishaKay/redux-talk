@@ -1,11 +1,5 @@
 <div class="card">
   <div class="list-group list-group-flush">
-    <a href="/?use_redux=YESPLZ" class="list-group-item list-group-item-action" *ngIf="!useRedux">
-      Use Redux
-    </a>
-    <a href="/" class="list-group-item list-group-item-action" *ngIf="useRedux">
-      Don't use Redux
-    </a>
     <template [ngIf]="useRedux">
       <div class="list-group-item">
         <div class="form-group row">
@@ -23,5 +17,11 @@
         </div>
       </div>
     </template>
+    <a href="/?use_redux=YESPLZ" class="list-group-item list-group-item-action" *ngIf="!useRedux">
+      Switch to Redux mode
+    </a>
+    <a href="/" class="list-group-item list-group-item-action" *ngIf="useRedux">
+      Switch to non-Redux mode
+    </a>
   </div>
 </div>
