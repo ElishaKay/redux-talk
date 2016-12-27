@@ -23,6 +23,7 @@ import { NewPostFormComponent } from './new-post-form/new-post-form.component';
 import { HomeComponent } from './home/home.component';
 import { rootReducer } from './app.reducers';
 import { AddNumbersComponent } from './add-numbers/add-numbers.component';
+import { PlaceOrderActionsComponent } from './place-order-actions/place-order-actions.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { AddNumbersComponent } from './add-numbers/add-numbers.component';
     HomeComponent,
     CounterComponent,
     AddNumbersComponent,
+    PlaceOrderActionsComponent,
   ],
   imports: [
     Angular2FontawesomeModule,
@@ -53,6 +55,7 @@ import { AddNumbersComponent } from './add-numbers/add-numbers.component';
       { path: '', component: HomeComponent },
       { path: 'counter', component: CounterComponent },
       { path: 'add', component: AddNumbersComponent },
+      { path: 'place-order-actions', component: PlaceOrderActionsComponent },
     ]),
   ],
   bootstrap: [AppComponent]
