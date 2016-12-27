@@ -1,6 +1,4 @@
-import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome';
 import { BrowserModule } from '@angular/platform-browser';
-import { DevToolsExtension, NgRedux, NgReduxModule } from 'ng2-redux';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MomentModule } from 'angular2-moment';
@@ -29,17 +27,6 @@ import { PlaceOrderActions2Component } from './place-order-actions-2/place-order
 @NgModule({
   declarations: [
     AppComponent,
-    ControlPanelComponent,
-    ControlPanelContainerComponent,
-    ProfileComponent,
-    ProfileContainerComponent,
-    NavbarComponent,
-    NavbarContainerComponent,
-    PostComponent,
-    TimelineComponent,
-    TimelineContainerComponent,
-    NewPostNotificationComponent,
-    NewPostFormComponent,
     HomeComponent,
     CounterComponent,
     AddNumbersComponent,
@@ -47,33 +34,20 @@ import { PlaceOrderActions2Component } from './place-order-actions-2/place-order
     PlaceOrderActions2Component,
   ],
   imports: [
-    Angular2FontawesomeModule,
     BrowserModule,
     FormsModule,
     HttpModule,
     MomentModule,
-    NgReduxModule.forRoot(),
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
+      { path: 'twitter', loadChildren: 'app/twitter/twitter.module#TwitterModule' },
       { path: 'counter', component: CounterComponent },
       { path: 'add', component: AddNumbersComponent },
       { path: 'place-order-actions', component: PlaceOrderActionsComponent },
       { path: 'place-order-actions-2', component: PlaceOrderActions2Component },
+      { path: 'place-order-actions-3', loadChildren: 'app/place-order-actions-3/place-order-actions-3.module#PlaceOrderActions3Module' },
     ]),
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-  constructor(
-    devToolsExtension: DevToolsExtension,
-    ngRedux: NgRedux<IAppState>
-  ) {
-    const enhancers = [];
-
-    if (devToolsExtension.isEnabled()) {
-      enhancers.push(devToolsExtension.enhancer());
-    }
-
-    ngRedux.configureStore(rootReducer, {}, [], enhancers);
-  }
-}
+export class AppModule {}
