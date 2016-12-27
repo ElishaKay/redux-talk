@@ -24,6 +24,7 @@ import { HomeComponent } from './home/home.component';
 import { rootReducer } from './app.reducers';
 import { AddNumbersComponent } from './add-numbers/add-numbers.component';
 import { PlaceOrderActionsComponent } from './place-order-actions/place-order-actions.component';
+import { PlaceOrderActions2Component } from './place-order-actions-2/place-order-actions-2.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { PlaceOrderActionsComponent } from './place-order-actions/place-order-ac
     CounterComponent,
     AddNumbersComponent,
     PlaceOrderActionsComponent,
+    PlaceOrderActions2Component,
   ],
   imports: [
     Angular2FontawesomeModule,
@@ -56,6 +58,7 @@ import { PlaceOrderActionsComponent } from './place-order-actions/place-order-ac
       { path: 'counter', component: CounterComponent },
       { path: 'add', component: AddNumbersComponent },
       { path: 'place-order-actions', component: PlaceOrderActionsComponent },
+      { path: 'place-order-actions-2', component: PlaceOrderActions2Component },
     ]),
   ],
   bootstrap: [AppComponent]

@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="jumbotron text-xs-center col-xs-12 mt-3">
+      <h1 class="display-3 mb-2">Running total: ${{runningTotal}}</h1>
+
+      <div class="form-inline">
+        <div class="form-group">
+          <input #orderTotal type="text" class="form-control" id="orderTotal" placeholder="Amount">
+          <button
+            class="btn btn-primary"
+            (click)="handlePlaceOrderButtonClicked(orderTotal.value)"
+            >Place order
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
