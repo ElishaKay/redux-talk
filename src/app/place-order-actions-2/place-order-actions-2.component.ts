@@ -20,11 +20,10 @@ export class PlaceOrderActions2Component implements OnInit {
   }
 
   // tslint:disable-next-line:no-unused-variable
-  private handlePlaceOrderButtonClicked(orderTotal: string): void {
-    const orderTotalAsNumber = Number(orderTotal);
+  private handlePlaceOrderButtonClicked(orderTotal: number): void {
     this.runningTotal = this.getRunningTotal(this.runningTotal, {
       type: 'PLACE_ORDER',
-      orderTotal: orderTotalAsNumber,
+      orderTotal: orderTotal,
     });
   }
 }
