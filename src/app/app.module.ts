@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { ControlPanelComponent } from './control-panel/control-panel.component';
 import { ControlPanelContainerComponent } from './control-panel/control-panel.container';
+import { CounterComponent } from './counter/counter.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileContainerComponent } from './profile/profile.container';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -21,6 +22,7 @@ import { NewPostNotificationComponent } from './new-post-notification/new-post-n
 import { NewPostFormComponent } from './new-post-form/new-post-form.component';
 import { HomeComponent } from './home/home.component';
 import { rootReducer } from './app.reducers';
+import { AddNumbersComponent } from './add-numbers/add-numbers.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,8 @@ import { rootReducer } from './app.reducers';
     NewPostNotificationComponent,
     NewPostFormComponent,
     HomeComponent,
+    CounterComponent,
+    AddNumbersComponent,
   ],
   imports: [
     Angular2FontawesomeModule,
@@ -47,6 +51,8 @@ import { rootReducer } from './app.reducers';
     NgReduxModule.forRoot(),
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
+      { path: 'counter', component: CounterComponent },
+      { path: 'add', component: AddNumbersComponent },
     ]),
   ],
   bootstrap: [AppComponent]
