@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { PlaceOrderActions3Component } from './place-order-actions-3.component';
-import { runningTotal } from './orders-reducer';
+import { rootReducer } from './running-total.reducer';
 
 @NgModule({
   imports: [
@@ -27,6 +27,6 @@ export class PlaceOrderActions3Module {
       enhancers.push(devToolsExtension.enhancer());
     }
 
-    ngRedux.configureStore(runningTotal, {}, [], enhancers);
+    ngRedux.configureStore(rootReducer, {}, [], enhancers);
   }
 }
