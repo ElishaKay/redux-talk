@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import * as uuid from 'uuid';
 
-import { mockPosts } from './mock-posts';
+import { getMockPosts } from './mock-posts';
 
 @Component({
   selector: 'app-timeline',
@@ -43,7 +43,7 @@ export class TimelineComponent {
   @Input() private profilePhotoURL: string =
     'https://pbs.twimg.com/profile_images/378800000310650745/5e38031f42fdbacc2c2041f021460f02.jpeg';
 
-  @Input() private posts: IPost[] = mockPosts;
+  @Input() private posts: IPost[] = getMockPosts();
   @Input() private newPostIds: string[] = this.posts.slice(0, 2).map(post => post.id);
 
   @Input() private isRedux: boolean = false;
