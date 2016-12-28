@@ -41,11 +41,11 @@ import { PlaceOrderActions2Component } from './place-order-actions-2/place-order
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'twitter', loadChildren: 'app/twitter/twitter.module#TwitterModule' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'add', component: AddNumbersComponent },
-      { path: 'place-order-actions', component: PlaceOrderActionsComponent },
-      { path: 'place-order-actions-2', component: PlaceOrderActions2Component },
-      { path: 'place-order-actions-3', loadChildren: 'app/place-order-actions-3/place-order-actions-3.module#PlaceOrderActions3Module' },
+      { path: 'counter', component: CounterComponent }, // Not used for demo
+      { path: 'demo-1', component: AddNumbersComponent },
+      { path: 'demo-2', component: PlaceOrderActionsComponent },
+      { path: 'demo-3', component: PlaceOrderActions2Component },
+      { path: 'demo-4', loadChildren: 'app/place-order-actions-3/place-order-actions-3.module#PlaceOrderActions3Module' },
     ]),
   ],
   bootstrap: [AppComponent]
