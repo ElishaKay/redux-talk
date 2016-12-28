@@ -60,6 +60,6 @@ export class TwitterModule {
       enhancers.push(devToolsExtension.enhancer());
     }
 
-    ngRedux.configureStore(rootReducer, {}, [], enhancers);
+    ngRedux.configureStore(rootReducer, undefined, [], enhancers);
   }
 }

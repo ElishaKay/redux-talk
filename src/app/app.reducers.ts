@@ -45,13 +45,13 @@ function posts(state: IPost[] = mockPosts, action) {
   }
 }
 
-const USER_INITIAL_STATE = {
+const USER_INITIAL_STATE: IUser = {
   name: 'Jesse Pinho',
   handle: 'jessepinho',
   headerPhotoURL: 'https://pbs.twimg.com/profile_banners/16901789/1398787929/1500x500',
   profilePhotoURL: 'https://pbs.twimg.com/profile_images/378800000310650745/5e38031f42fdbacc2c2041f021460f02.jpeg',
 };
-function user(state = USER_INITIAL_STATE, action) {
+function user(state = USER_INITIAL_STATE, action): IUser {
   switch (action.type) {
     case USER_SET_NAME:
       return Object.assign({}, state, { name: action.value });
@@ -62,7 +62,7 @@ function user(state = USER_INITIAL_STATE, action) {
   }
 }
 
-export const rootReducer = combineReducers({
+export const rootReducer = combineReducers<IAppState>({
   newPostIds,
   posts,
   user,
