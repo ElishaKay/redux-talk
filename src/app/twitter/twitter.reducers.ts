@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-import { mockPosts } from './timeline/mock-posts';
+import { mockPosts } from '../timeline/mock-posts';
 import {
   POST_ADD,
   POST_TOGGLE_LIKE,
@@ -9,7 +9,7 @@ import {
 
   USER_SET_NAME,
   USER_SET_HANDLE,
-} from './app.action-types';
+} from './twitter.action-types';
 
 const LAST_TWO_POST_IDS = mockPosts.slice(0, 2).map(post => post.id);
 function newPostIds(state: string[] = LAST_TWO_POST_IDS, action) {

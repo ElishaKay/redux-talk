@@ -10,7 +10,7 @@ export class PlaceOrderActions3Component implements OnDestroy {
   private disconnect: Function;
 
   constructor(
-    private ngRedux: NgRedux<IAppState>
+    private ngRedux: NgRedux<any>
   ) {
     this.disconnect = ngRedux.connect(this.mapStateToProps, this.mapDispatchToProps)(this);
   }
@@ -19,7 +19,7 @@ export class PlaceOrderActions3Component implements OnDestroy {
     this.disconnect();
   }
 
-  private mapStateToProps(state: IAppState) {
+  private mapStateToProps(state: any) {
     const { runningTotal } = state;
 
     return {

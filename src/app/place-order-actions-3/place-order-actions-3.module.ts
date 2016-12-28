@@ -19,7 +19,7 @@ import { rootReducer } from './running-total.reducer';
 export class PlaceOrderActions3Module {
   constructor(
     devToolsExtension: DevToolsExtension,
-    ngRedux: NgRedux<IAppState>
+    ngRedux: NgRedux<any>
   ) {
     const enhancers = [];
 

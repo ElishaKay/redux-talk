@@ -1,7 +1,7 @@
 import { Component, Input, OnDestroy } from '@angular/core';
 import { NgRedux } from 'ng2-redux';
 
-import { USER_SET_NAME, USER_SET_HANDLE } from '../app.action-types';
+import { USER_SET_NAME, USER_SET_HANDLE } from '../twitter/twitter.action-types';
 
 @Component({
   selector: 'app-control-panel-container',

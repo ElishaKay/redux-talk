@@ -6,7 +6,7 @@ import {
   POST_TOGGLE_LIKE,
   POST_TOGGLE_REPOST,
   NEW_POST_IDS_RESET,
-} from '../app.action-types';
+} from '../twitter/twitter.action-types';
 
 @Component({
   selector: 'app-timeline-container',
