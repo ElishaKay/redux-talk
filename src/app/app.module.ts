@@ -19,7 +19,6 @@ import { TimelineContainerComponent } from './timeline/timeline.container';
 import { NewPostNotificationComponent } from './new-post-notification/new-post-notification.component';
 import { NewPostFormComponent } from './new-post-form/new-post-form.component';
 import { HomeComponent } from './home/home.component';
-import { rootReducer } from './app.reducers';
 import { AddNumbersComponent } from './add-numbers/add-numbers.component';
 import { PlaceOrderActionsComponent } from './place-order-actions/place-order-actions.component';
 import { PlaceOrderActions2Component } from './place-order-actions-2/place-order-actions-2.component';
