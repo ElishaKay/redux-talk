@@ -46,7 +46,7 @@ import { PlaceOrderActions2Component } from './place-order-actions-2/place-order
       { path: 'demo-2', component: PlaceOrderActionsComponent },
       { path: 'demo-3', component: PlaceOrderActions2Component },
       { path: 'demo-4', loadChildren: 'app/place-order-actions-3/place-order-actions-3.module#PlaceOrderActions3Module' },
-    ]),
+    ], { useHash: true }),
   ],
   bootstrap: [AppComponent]
 })
