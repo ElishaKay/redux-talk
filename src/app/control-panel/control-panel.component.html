@@ -1,5 +1,12 @@
 <div class="card">
   <div class="list-group list-group-flush">
+    <a href="/#/twitter?use_redux=YESPLZ" class="list-group-item list-group-item-action" *ngIf="!useRedux">
+      Switch to Redux mode
+    </a>
+    <a href="/#/twitter" class="list-group-item list-group-item-action" *ngIf="useRedux">
+      Switch to non-Redux mode
+    </a>
+    <a href="https://github.com/jessepinho/redux-talk" class="list-group-item list-group-item-action">View on GitHub</a>
     <template [ngIf]="useRedux">
       <div class="list-group-item">
         <div class="form-group row">
@@ -17,11 +24,5 @@
         </div>
       </div>
     </template>
-    <a href="/#/twitter?use_redux=YESPLZ" class="list-group-item list-group-item-action" *ngIf="!useRedux">
-      Switch to Redux mode
-    </a>
-    <a href="/#/twitter" class="list-group-item list-group-item-action" *ngIf="useRedux">
-      Switch to non-Redux mode
-    </a>
   </div>
 </div>
