@@ -19,7 +19,7 @@ import { TimelineComponent } from '../timeline/timeline.component';
 import { TimelineContainerComponent } from '../timeline/timeline.container';
 import { NewPostNotificationComponent } from '../new-post-notification/new-post-notification.component';
 import { NewPostFormComponent } from '../new-post-form/new-post-form.component';
-import { rootReducer } from '../app.reducers';
+import { rootReducer } from './twitter.reducers';
 import { TwitterComponent } from './twitter.component';
 
 @NgModule({
