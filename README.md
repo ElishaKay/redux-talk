@@ -24,7 +24,7 @@ Before running the tests make sure you are serving the app via `ng serve`.
 
 ## Deploying to Github Pages
 
-Run `ng github-pages:deploy` to deploy to Github Pages.
+Run `ng github-pages:deploy --base-href=/ --target=development` to deploy to Github Pages. (The `--target=development` is needed to preserve the `debugger` statements in the app.)
 
 ## Further help
 
