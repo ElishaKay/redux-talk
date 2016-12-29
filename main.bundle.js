@@ -33291,13 +33291,13 @@ var TreeNode = (function () {
 /* harmony export (binding) */ __webpack_require__.d(exports, "c", function() { return POST_ADD; });
 /* harmony export (binding) */ __webpack_require__.d(exports, "e", function() { return POST_TOGGLE_LIKE; });
 /* harmony export (binding) */ __webpack_require__.d(exports, "f", function() { return POST_TOGGLE_REPOST; });
-/* harmony export (binding) */ __webpack_require__.d(exports, "d", function() { return NEW_POST_IDS_RESET; });
+/* harmony export (binding) */ __webpack_require__.d(exports, "d", function() { return POST_CLICK_NEW_POST_NOTIFICATION; });
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return USER_SET_NAME; });
 /* harmony export (binding) */ __webpack_require__.d(exports, "b", function() { return USER_SET_HANDLE; });
 var POST_ADD = 'POST_ADD';
 var POST_TOGGLE_LIKE = 'POST_TOGGLE_LIKE';
 var POST_TOGGLE_REPOST = 'POST_TOGGLE_REPOST';
-var NEW_POST_IDS_RESET = 'NEW_POST_IDS_RESET';
+var POST_CLICK_NEW_POST_NOTIFICATION = 'POST_CLICK_NEW_POST_NOTIFICATION';
 var USER_SET_NAME = 'USER_SET_NAME';
 var USER_SET_HANDLE = 'USER_SET_HANDLE';
 
@@ -63808,16 +63808,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var NavbarContainerComponent = (function () {
     function NavbarContainerComponent(ngRedux) {
         this.ngRedux = ngRedux;
-        this.disconnect = ngRedux.connect(this.mapStateToTarget, null)(this);
+        this.disconnect = ngRedux.connect(this.mapStateToProps, null)(this);
     }
     NavbarContainerComponent.prototype.ngOnDestroy = function () {
         this.disconnect();
     };
-    NavbarContainerComponent.prototype.mapStateToTarget = function (state) {
-        var _a = state.user, name = _a.name, profilePhotoURL = _a.profilePhotoURL;
+    NavbarContainerComponent.prototype.mapStateToProps = function (state) {
         return {
-            name: name,
-            profilePhotoURL: profilePhotoURL,
+            name: state.user.name,
+            profilePhotoURL: state.user.profilePhotoURL,
         };
     };
     NavbarContainerComponent = __decorate([
@@ -64241,21 +64240,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var ProfileContainerComponent = (function () {
     function ProfileContainerComponent(ngRedux) {
         this.ngRedux = ngRedux;
-        this.disconnect = ngRedux.connect(this.mapStateToTarget, null)(this);
+        this.disconnect = ngRedux.connect(this.mapStateToProps, null)(this);
     }
     ProfileContainerComponent.prototype.ngOnDestroy = function () {
         this.disconnect();
     };
-    ProfileContainerComponent.prototype.mapStateToTarget = function (state) {
-        var posts = state.posts, _a = state.user, name = _a.name, handle = _a.handle, headerPhotoURL = _a.headerPhotoURL, profilePhotoURL = _a.profilePhotoURL;
+    ProfileContainerComponent.prototype.mapStateToProps = function (state) {
         return {
-            name: name,
-            handle: handle,
-            headerPhotoURL: headerPhotoURL,
-            profilePhotoURL: profilePhotoURL,
-            posts: posts.filter(function (post) { return post.handle === handle; }).length,
-            likes: posts.filter(function (post) { return post.liked; }).length,
-            reposts: posts.filter(function (post) { return post.reposted; }).length,
+            name: state.user.name,
+            handle: state.user.handle,
+            headerPhotoURL: state.user.headerPhotoURL,
+            profilePhotoURL: state.user.profilePhotoURL,
+            posts: state.posts.filter(function (post) { return post.handle === state.user.handle; }).length,
+            likes: state.posts.filter(function (post) { return post.liked; }).length,
+            reposts: state.posts.filter(function (post) { return post.reposted; }).length,
         };
     };
     ProfileContainerComponent = __decorate([
@@ -64455,25 +64453,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var TimelineContainerComponent = (function () {
     function TimelineContainerComponent(ngRedux) {
         this.ngRedux = ngRedux;
-        this.disconnect = ngRedux.connect(this.mapStateToTarget, this.mapDispatchToThis)(this);
+        this.disconnect = ngRedux.connect(this.mapStateToProps, this.mapDispatchToProps)(this);
     }
     TimelineContainerComponent.prototype.ngOnDestroy = function () {
         this.disconnect();
     };
-    TimelineContainerComponent.prototype.mapStateToTarget = function (state) {
-        var newPostIds = state.newPostIds, posts = state.posts, _a = state.user, name = _a.name, handle = _a.handle, profilePhotoURL = _a.profilePhotoURL;
+    TimelineContainerComponent.prototype.mapStateToProps = function (state) {
         return {
-            newPostIds: newPostIds,
-            posts: posts,
-            name: name,
-            handle: handle,
-            profilePhotoURL: profilePhotoURL,
+            newPostIds: state.newPostIds,
+            posts: state.posts,
+            name: state.user.name,
+            handle: state.user.handle,
+            profilePhotoURL: state.user.profilePhotoURL,
         };
     };
-    TimelineContainerComponent.prototype.mapDispatchToThis = function (dispatch) {
+    TimelineContainerComponent.prototype.mapDispatchToProps = function (dispatch) {
         return {
             handleNewPost: function (post) { return dispatch({ type: __WEBPACK_IMPORTED_MODULE_2__twitter_twitter_action_types__["c" /* POST_ADD */], value: post }); },
-            handleNewPostNotificationClick: function () { return dispatch({ type: __WEBPACK_IMPORTED_MODULE_2__twitter_twitter_action_types__["d" /* NEW_POST_IDS_RESET */] }); },
+            handleNewPostNotificationClick: function () { return dispatch({ type: __WEBPACK_IMPORTED_MODULE_2__twitter_twitter_action_types__["d" /* POST_CLICK_NEW_POST_NOTIFICATION */] }); },
             handleToggleLikePost: function (post) { return dispatch({ type: __WEBPACK_IMPORTED_MODULE_2__twitter_twitter_action_types__["e" /* POST_TOGGLE_LIKE */], value: post }); },
             handleToggleRepost: function (post) { return dispatch({ type: __WEBPACK_IMPORTED_MODULE_2__twitter_twitter_action_types__["f" /* POST_TOGGLE_REPOST */], value: post }); },
         };
@@ -64543,20 +64540,9 @@ var TwitterComponent = (function () {
 
 
 
-var mockPosts = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__timeline_mock_posts__["a" /* getMockPosts */])();
-var LAST_TWO_POST_IDS = mockPosts.slice(0, 2).map(function (post) { return post.id; });
-function newPostIds(state, action) {
-    if (state === void 0) { state = LAST_TWO_POST_IDS; }
-    if (action.type === __WEBPACK_IMPORTED_MODULE_2__twitter_action_types__["c" /* POST_ADD */]) {
-        return [action.value.id].concat(state);
-    }
-    if (action.type === __WEBPACK_IMPORTED_MODULE_2__twitter_action_types__["d" /* NEW_POST_IDS_RESET */]) {
-        return [];
-    }
-    return state;
-}
+var POSTS_INITIAL_STATE = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__timeline_mock_posts__["a" /* getMockPosts */])();
 function posts(state, action) {
-    if (state === void 0) { state = mockPosts; }
+    if (state === void 0) { state = POSTS_INITIAL_STATE; }
     switch (action.type) {
         case __WEBPACK_IMPORTED_MODULE_2__twitter_action_types__["c" /* POST_ADD */]:
             return [action.value].concat(state);
@@ -64595,10 +64581,21 @@ function user(state, action) {
             return state;
     }
 }
+var NEW_POST_IDS_INITIAL_STATE = POSTS_INITIAL_STATE.slice(0, 2).map(function (post) { return post.id; });
+function newPostIds(state, action) {
+    if (state === void 0) { state = NEW_POST_IDS_INITIAL_STATE; }
+    if (action.type === __WEBPACK_IMPORTED_MODULE_2__twitter_action_types__["c" /* POST_ADD */]) {
+        return [action.value.id].concat(state);
+    }
+    if (action.type === __WEBPACK_IMPORTED_MODULE_2__twitter_action_types__["d" /* POST_CLICK_NEW_POST_NOTIFICATION */]) {
+        return [];
+    }
+    return state;
+}
 var rootReducer = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redux__["combineReducers"])({
-    newPostIds: newPostIds,
     posts: posts,
     user: user,
+    newPostIds: newPostIds,
 });
 
 
@@ -68053,7 +68050,7 @@ module.exports = "<div class=\"container\">\n  <div class=\"row\">\n    <div cla
 /* 729 */
 /***/ function(module, exports) {
 
-module.exports = "<router-outlet></router-outlet>\n\n<div class=\"container\">\n  <div class=\"row\">\n    <div class=\"col-xs-8 offset-xs-2 mt-3\">\n      <div class=\"card\">\n        <div class=\"list-group list-group-flush\">\n          <a\n            [routerLink]=\"'/demo-1'\"\n            class=\"list-group-item list-group-item-action\"\n            >\n            Demo #1: Simple reducer function\n          </a>\n\n          <a\n            [routerLink]=\"'/demo-2'\"\n            class=\"list-group-item list-group-item-action\"\n            >\n            Demo #2: Reducer function with <code>PLACE_ORDER</code> actions\n          </a>\n\n          <a\n            [routerLink]=\"'/demo-3'\"\n            class=\"list-group-item list-group-item-action\"\n            >\n            Demo #3: Reducer function called when user clicks \"Place order\" buttons\n          </a>\n\n          <a\n            [routerLink]=\"'/demo-4'\"\n            class=\"list-group-item list-group-item-action\"\n            >\n            Demo #4: Full Redux example with \"Place order\" buttons\n          </a>\n\n          <a\n            [routerLink]=\"'/twitter'\"\n            class=\"list-group-item list-group-item-action\"\n            >\n            Twitter clone\n          </a>\n\n          <a\n            href=\"https://github.com/jessepinho/redux-talk\"\n            class=\"list-group-item list-group-item-action\"\n            >\n            View on GitHub\n          </a>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<router-outlet></router-outlet>\n\n<div class=\"container\">\n  <div class=\"row\">\n    <div class=\"col-xs-8 offset-xs-2 mt-3\">\n      <div class=\"card\">\n        <div class=\"list-group list-group-flush\">\n          <a\n            [routerLink]=\"'/demo-1'\"\n            class=\"list-group-item list-group-item-action\"\n            >\n            Demo #1: Simple reducer function\n          </a>\n\n          <a\n            [routerLink]=\"'/demo-2'\"\n            class=\"list-group-item list-group-item-action\"\n            >\n            Demo #2: Reducer function with <code>PLACE_ORDER</code> actions\n          </a>\n\n          <a\n            [routerLink]=\"'/demo-3'\"\n            class=\"list-group-item list-group-item-action\"\n            >\n            Demo #3: Reducer function called when user clicks \"Place order\" buttons\n          </a>\n\n          <a\n            [routerLink]=\"'/demo-4'\"\n            class=\"list-group-item list-group-item-action\"\n            >\n            Demo #4: Full Redux example with \"Place order\" buttons\n          </a>\n\n          <a\n            [routerLink]=\"'/twitter'\"\n            class=\"list-group-item list-group-item-action\"\n            >\n            Twitter\n          </a>\n\n          <a\n            href=\"https://github.com/jessepinho/redux-talk\"\n            class=\"list-group-item list-group-item-action\"\n            >\n            View on GitHub\n          </a>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n"
 
 /***/ },
 /* 730 */
