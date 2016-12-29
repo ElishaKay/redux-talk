@@ -5,7 +5,7 @@ import {
   POST_ADD,
   POST_TOGGLE_LIKE,
   POST_TOGGLE_REPOST,
-  NEW_POST_IDS_RESET,
+  POST_CLICK_NEW_POST_NOTIFICATION,
 } from '../twitter/twitter.action-types';
 
 @Component({
@@ -30,41 +30,29 @@ import {
 export class TimelineContainerComponent implements OnDestroy {
   private disconnect: Function;
 
-  constructor(
-    private ngRedux: NgRedux<IAppState>
-  ) {
-    this.disconnect = ngRedux.connect(this.mapStateToTarget, this.mapDispatchToThis)(this);
+  constructor(private ngRedux: NgRedux<IAppState>) {
+    this.disconnect = ngRedux.connect(this.mapStateToProps, this.mapDispatchToProps)(this);
   }
 
   ngOnDestroy() {
     this.disconnect();
   }
 
-  private mapStateToTarget(state) {
-    const {
-      newPostIds,
-      posts,
-      user: {
-        name,
-        handle,
-        profilePhotoURL,
-      },
-    } = state;
-
+  private mapStateToProps(state) {
     return {
-      newPostIds,
-      posts,
+      newPostIds: state.newPostIds,
+      posts: state.posts,
 
-      name,
-      handle,
-      profilePhotoURL,
+      name: state.user.name,
+      handle: state.user.handle,
+      profilePhotoURL: state.user.profilePhotoURL,
     };
   }
 
-  private mapDispatchToThis(dispatch) {
+  private mapDispatchToProps(dispatch) {
     return {
       handleNewPost: (post: IPost) => dispatch({ type: POST_ADD, value: post }),
-      handleNewPostNotificationClick: () => dispatch({ type: NEW_POST_IDS_RESET }),
+      handleNewPostNotificationClick: () => dispatch({ type: POST_CLICK_NEW_POST_NOTIFICATION }),
       handleToggleLikePost: (post: IPost) => dispatch({ type: POST_TOGGLE_LIKE, value: post }),
       handleToggleRepost: (post: IPost) => dispatch({ type: POST_TOGGLE_REPOST, value: post }),
     };

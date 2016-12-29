@@ -18,36 +18,24 @@ import { NgRedux } from 'ng2-redux';
 export class ProfileContainerComponent implements OnDestroy {
   private disconnect: Function;
 
-  constructor(
-    private ngRedux: NgRedux<IAppState>
-  ) {
-    this.disconnect = ngRedux.connect(this.mapStateToTarget, null)(this);
+  constructor(private ngRedux: NgRedux<IAppState>) {
+    this.disconnect = ngRedux.connect(this.mapStateToProps, null)(this);
   }
 
   ngOnDestroy() {
     this.disconnect();
   }
 
-  private mapStateToTarget(state: IAppState) {
-    const {
-      posts,
-      user: {
-        name,
-        handle,
-        headerPhotoURL,
-        profilePhotoURL,
-      },
-    } = state;
-
+  private mapStateToProps(state: IAppState) {
     return {
-      name,
-      handle,
-      headerPhotoURL,
-      profilePhotoURL,
+      name: state.user.name,
+      handle: state.user.handle,
+      headerPhotoURL: state.user.headerPhotoURL,
+      profilePhotoURL: state.user.profilePhotoURL,
 
-      posts: posts.filter(post => post.handle === handle).length,
-      likes: posts.filter(post => post.liked).length,
-      reposts: posts.filter(post => post.reposted).length,
+      posts: state.posts.filter(post => post.handle === state.user.handle).length,
+      likes: state.posts.filter(post => post.liked).length,
+      reposts: state.posts.filter(post => post.reposted).length,
     };
   }
 }

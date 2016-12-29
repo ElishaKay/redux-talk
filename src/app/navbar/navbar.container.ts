@@ -13,22 +13,18 @@ import { NgRedux } from 'ng2-redux';
 export class NavbarContainerComponent {
   private disconnect: Function;
 
-  constructor(
-    private ngRedux: NgRedux<IAppState>
-  ) {
-    this.disconnect = ngRedux.connect(this.mapStateToTarget, null)(this);
+  constructor(private ngRedux: NgRedux<IAppState>) {
+    this.disconnect = ngRedux.connect(this.mapStateToProps, null)(this);
   }
 
   ngOnDestroy() {
     this.disconnect();
   }
 
-  private mapStateToTarget(state: IAppState) {
-    const { user: { name, profilePhotoURL } } = state;
-
+  private mapStateToProps(state: IAppState) {
     return {
-      name,
-      profilePhotoURL,
+      name: state.user.name,
+      profilePhotoURL: state.user.profilePhotoURL,
     };
   }
 }
