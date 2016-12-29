@@ -1,3 +1,9 @@
+interface IAppState {
+  posts: IPost[];
+  user: IUser;
+  newPostIds: string[];
+}
+
 interface IPost {
   id: string;
   createdAt: Date;
@@ -14,10 +20,4 @@ interface IUser {
   handle: string;
   headerPhotoURL: string;
   profilePhotoURL: string;
-}
-
-interface IAppState {
-  newPostIds: string[];
-  posts: IPost[];
-  user: IUser;
 }
