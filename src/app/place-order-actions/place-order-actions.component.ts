@@ -9,32 +9,32 @@ export class PlaceOrderActionsComponent implements OnInit {
   private runningTotal: number;
   // tslint:disable-next-line:no-unused-variable
   private codeSample: string = `
-const orders = [
+const actions = [
   { type: 'PLACE_ORDER', orderTotal: 10 },
   { type: 'PLACE_ORDER', orderTotal: 20 },
   { type: 'PLACE_ORDER', orderTotal: 30 },
 ];
 
-function addOrderToRunningTotal(currentRunningTotal, order) {
+function addOrderToRunningTotal(currentRunningTotal, action) {
   debugger;
-  return currentRunningTotal + order.orderTotal;
+  return currentRunningTotal + action.orderTotal;
 }
 
-this.runningTotal = orders.reduce(addOrderToRunningTotal, 0);
+this.runningTotal = actions.reduce(addOrderToRunningTotal, 0);
   `;
 
   ngOnInit() {
-    const orders = [
+    const actions = [
       { type: 'PLACE_ORDER', orderTotal: 10 },
       { type: 'PLACE_ORDER', orderTotal: 20 },
       { type: 'PLACE_ORDER', orderTotal: 30 },
     ];
 
-    function addOrderToRunningTotal(currentRunningTotal, order) {
+    function addOrderToRunningTotal(currentRunningTotal, action) {
       debugger;
-      return currentRunningTotal + order.orderTotal;
+      return currentRunningTotal + action.orderTotal;
     }
 
-    this.runningTotal = orders.reduce(addOrderToRunningTotal, 0);
+    this.runningTotal = actions.reduce(addOrderToRunningTotal, 0);
   }
 }
