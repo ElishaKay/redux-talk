@@ -9,6 +9,7 @@ import {
 
   USER_SET_NAME,
   USER_SET_HANDLE,
+  USER_SET_PROFILE_PHOTO_URL,
 } from './twitter.action-types';
 
 const POSTS_INITIAL_STATE = getMockPosts();
@@ -49,6 +50,8 @@ function user(state: IUser = USER_INITIAL_STATE, action): IUser {
       return Object.assign({}, state, { name: action.value });
     case USER_SET_HANDLE:
       return Object.assign({}, state, { handle: action.value });
+    case USER_SET_PROFILE_PHOTO_URL:
+      return Object.assign({}, state, { profilePhotoURL: action.value });
     default:
       return state;
   }
