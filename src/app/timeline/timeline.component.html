@@ -2,6 +2,7 @@
   <ul class="list-group list-group-flush">
     <li class="list-group-item new-post-form">
       <app-new-post-form
+        [profilePhotoURL]="profilePhotoURL"
         (newPost)="handleNewPost($event)"
         ></app-new-post-form>
     </li>
