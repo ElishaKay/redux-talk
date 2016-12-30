@@ -1,4 +1,3 @@
-import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -34,7 +33,6 @@ import { PlaceOrderActions2Component } from './place-order-actions-2/place-order
     PlaceOrderActions2Component,
   ],
   imports: [
-    Angular2FontawesomeModule,
     BrowserModule,
     FormsModule,
     HttpModule,
